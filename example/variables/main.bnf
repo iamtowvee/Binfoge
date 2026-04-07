@@ -35,7 +35,7 @@ pub int main() {
 
     let int x = calc(c, a, b);
     if (c == "/" && b == 0) {
-        skip;
+        stmt::null;
     } else {
         sendln!(x);
     }
