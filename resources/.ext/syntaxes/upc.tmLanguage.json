@@ -3,8 +3,8 @@
   "name": "UPC Config",
   "scopeName": "source.upc",
   "patterns": [
-    { "include": "#comments" },
-    { "include": "#key-value" }
+    { "include": "#key-value" },
+    { "include": "#comments" }
   ],
   "repository": {
     "comments": {
@@ -27,7 +27,7 @@
           "beginCaptures": {
             "2": { "name": "entity.other.attribute-name" }
           },
-          "end": "$",
+          "end": "(?=\\s*#!|$)",
           "patterns": [
             { "include": "#value" }
           ]
