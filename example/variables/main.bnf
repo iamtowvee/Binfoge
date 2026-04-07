@@ -1,0 +1,38 @@
+/*
+Binfoge Syntax Example
+Language: Binfoge (Version: 26.04.1A)
+
+Theme in example: "GitHub Dark Colorblind (Beta)" (VS Code plugin: "GitHub Theme")
+*/
+
+fn int calc(str op, int first, int second) {
+    case (op) {
+        "+" => { return first + second; },
+        "-" => { return first - second; },
+        "*" => { return first * second; },
+        "/" => {
+            if (second != 0) {
+                return first / second;
+            } else {
+                sendln!("Infinity.");
+                return 0;
+            }
+        },
+        ["^","**"] => { return first ** second; },
+        "%" => { return first % second; },
+        _ => {
+            sendln!("Unknown.");
+            return 0; 
+        }
+    }
+    return 0; // Every function must have a return expression before its end
+}
+
+pub int main() {
+    let int x = calc("+", 14, 28);
+    sendln!(x);
+    return 0;
+}
+
+
+

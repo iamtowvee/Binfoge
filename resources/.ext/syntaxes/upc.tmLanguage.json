@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmLanguage/master/tmLanguage.json",
+  "name": "UPC Config",
+  "scopeName": "source.upc",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#key-value" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign",
+          "match": "#!.*$"
+        }
+      ]
+    },
+    
+    "key-value": {
+      "patterns": [
+        {
+          "begin": "^(\\s*)([a-zA-Z_][a-zA-Z0-9_.]*)\\s*:",
+          "beginCaptures": {
+            "2": { "name": "entity.other.attribute-name" }
+          },
+          "end": "$",
+          "patterns": [
+            { "include": "#value" }
+          ]
+        }
+      ]
+    },
+    
+    "value": {
+      "patterns": [
+        { "include": "#string-value" },
+        { "include": "#array-value" }
+      ]
+    },
+    
+    "string-value": {
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.string.begin" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end" }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape",
+              "match": "\\\\."
+            },
+            {
+              "name": "variable.other",
+              "match": "\\$\\{[^}]+\\}"
+            }
+          ]
+        }
+      ]
+    },
+    
+    "array-value": {
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "name": "meta.array",
+          "begin": "\\[",
+          "end": "\\]",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.array.begin" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.array.end" }
+          },
+          "patterns": [
+            {
+              "begin": "\"",
+              "end": "\"",
+              "name": "string.quoted.double",
+              "beginCaptures": {
+                "0": { "name": "punctuation.definition.string.begin" }
+              },
+              "endCaptures": {
+                "0": { "name": "punctuation.definition.string.end" }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

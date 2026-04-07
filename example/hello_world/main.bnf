@@ -1,0 +1,14 @@
+pub int main() {
+    sendln!("Hello World!");
+    return 0;
+}
+
+/*
+
+main function:
+    1. Always has a pub
+    2. Always returns an int
+    3. Never has arguments
+    4. Returns 0 for successful program completion; any other int value indicates an error
+
+*/

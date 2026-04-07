@@ -1,0 +1,51 @@
+{
+  "name": "binfoge",
+  "displayName": "Binfoge Language",
+  "description": "Syntax highlighting for Binfoge & UPC Languages",
+  "version": "26.4.4",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/iamtowvee/binfoge",
+  "publisher": "Fooltawn",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "binfoge",
+        "aliases": ["Binfoge", "binfoge"],
+        "extensions": [".bn",".bnf"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/bnf.svg",
+          "dark": "./icons/bnf.svg"
+        }
+      },
+      {
+        "id": "upc-config",
+        "aliases": ["UPC Config", "upc"],
+        "extensions": [".upc"],
+        "configuration": "./language-configuration-upc.json",
+        "icon": {
+          "light": "./icons/upc.svg",
+          "dark": "./icons/upc.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "binfoge",
+        "scopeName": "source.binfoge",
+        "path": "./syntaxes/binfoge.tmLanguage.json"
+      },
+      {
+        "language": "upc-config",
+        "scopeName": "source.upc",
+        "path": "./syntaxes/upc.tmLanguage.json"
+      }
+    ]
+  }
+}
