@@ -3,8 +3,8 @@
   "name": "UPC Config",
   "scopeName": "source.upc",
   "patterns": [
-    { "include": "#key-value" },
-    { "include": "#comments" }
+    { "include": "#comments" },
+    { "include": "#key-value" }
   ],
   "repository": {
     "comments": {
@@ -12,10 +12,7 @@
         {
           "name": "comment.line.number-sign",
           "begin": "#!",
-          "end": "$",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.comment" }
-          }
+          "end": "$"
         }
       ]
     },
@@ -47,15 +44,9 @@
       "end": "\\)",
       "patterns": [
         {
+          "name": "string.quoted.double",
           "begin": "\"",
           "end": "\"",
-          "name": "string.quoted.double",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.string.end" }
-          },
           "patterns": [
             {
               "name": "constant.character.escape",
@@ -78,23 +69,29 @@
           "name": "meta.array",
           "begin": "\\[",
           "end": "\\]",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.array.begin" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.array.end" }
-          },
           "patterns": [
             {
+              "name": "string.quoted.double",
               "begin": "\"",
               "end": "\"",
-              "name": "string.quoted.double",
-              "beginCaptures": {
-                "0": { "name": "punctuation.definition.string.begin" }
-              },
-              "endCaptures": {
-                "0": { "name": "punctuation.definition.string.end" }
-              }
+              "patterns": [
+                {
+                  "name": "constant.character.escape",
+                  "match": "\\\\."
+                },
+                {
+                  "name": "variable.other",
+                  "match": "\\$\\{[^}]+\\}"
+                }
+              ]
+            },
+            {
+              "name": "constant.numeric",
+              "match": "\\b\\d+(\\.\\d+)?\\b"
+            },
+            {
+              "name": "constant.language",
+              "match": "\\b(true|false|null)\\b"
             }
           ]
         }
