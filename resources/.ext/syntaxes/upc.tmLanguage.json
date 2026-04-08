@@ -6,7 +6,6 @@
     { "include": "#comments" },
     { "include": "#key-colon" },
     { "include": "#key-equals" },
-    { "include": "#operator-equals" },
     { "include": "#strings" },
     { "include": "#numbers" },
     { "include": "#constants" }
@@ -15,24 +14,24 @@
     "comments": {
       "name": "comment.line.number-sign",
       "begin": "#!",
-      "end": "$"
+      "end": "$",
+      "patterns": []
     },
     
     "key-colon": {
-      "name": "keyword.control",
-      "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_.]*)\\s*:"
-    },
-    
-    "key-equals": {
-      "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_.]*)\\s*(?==)",
+      "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_.]*)\\s*(:)",
       "captures": {
-        "1": { "name": "variable.other" }
+        "1": { "name": "entity.name.function" },
+        "2": { "name": "keyword.operator" }
       }
     },
     
-    "operator-equals": {
-      "name": "keyword.operator",
-      "match": "="
+    "key-equals": {
+      "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_.]*)\\s*(=)",
+      "captures": {
+        "1": { "name": "entity.name.function" },
+        "2": { "name": "keyword.operator" }
+      }
     },
     
     "strings": {
