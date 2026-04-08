@@ -2,7 +2,7 @@
   "name": "binfoge",
   "displayName": "Binfoge Language",
   "description": "Syntax highlighting for Binfoge & UPC Languages",
-  "version": "26.4.12",
+  "version": "26.4.15",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",

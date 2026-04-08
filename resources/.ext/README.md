@@ -8,13 +8,12 @@ It is needed for syntax highlighting of `.upc` and `.bn` (and `.bnf`, respective
 
 Version: `26.4.1` (Supported Binfoge language version: `A26.04.1`)
 
-> [!NOTE]
 > The language compiler is downloaded separately: [GitHub Releases](https://github.com/iamtowvee/binfoge/releases).
 
 ## Screenshots
 
-![Binfoge Syntax](https://raw.githubusercontent.com/iamtowvee/Binfoge/main/resources/.ext/screenshots/binfoge.png)
-![Binfoge UPC Syntax](https://raw.githubusercontent.com/iamtowvee/Binfoge/main/resources/.ext/screenshots/binfoge-upc.png)
+![Binfoge Syntax](https://i.imgur.com/UWduhTE.png)
+![Binfoge UPC Syntax](https://i.imgur.com/JnraDOg.png)
 
 ## License
 
