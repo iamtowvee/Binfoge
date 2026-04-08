@@ -1,0 +1,47 @@
+root/
+├─ README.md
+├─ LICENSE
+├─ .idea/
+│  ├─ structure.txt
+│  └─ sendln.txt
+│
+├─ bin/
+│  └─ binfoge.exe
+│
+├─ example/
+│  ├─ hello_world/
+│  │  ├─ binfoge.upc
+│  │  └─ main.bnf
+│  │
+│  └─ variables/
+│     ├─ binfoge.upc
+│     ├─ test.bnf
+│     └─ main.bnf
+│
+├─ resources/
+│  ├─ Binfoge-26.4.1.vsix
+│  └─ .ext/
+│     └─ ...
+│
+├─ binfoge.nimble
+└─ src/
+   ├─ ast.nim
+   ├─ binfoge.nim
+   ├─ compiler.nim
+   ├─ config.nim
+   ├─ conductor.nim
+   ├─ errors.nim
+   ├─ parser.nim
+   ├─ lexer.nim
+   ├─ tokens.nim
+   ├─ rules.nim // <-- правила, используемые для всех модулей; общий sem, например, точка с запятой в конце строки (если эта строка не кончается на { или })
+   ├─ std/
+   │  └─ ...
+   │
+   └─ core/
+      ├─ sendln/
+      │  ├─ errors.nim
+      │  ├─ data.nim
+      │  └─ sem.nim
+      │
+      └─ ...
