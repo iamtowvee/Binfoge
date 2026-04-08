@@ -50,6 +50,11 @@
               "match": "\\$\\{[^}]+\\}"
             }
           ]
+        },
+        {
+          "name": "string.quoted.double",
+          "begin": "'",
+          "end": "'"
         }
       ]
     },
