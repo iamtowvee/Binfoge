@@ -13,7 +13,8 @@ Version: `26.4.1` (Supported Binfoge language version: `A26.04.1`)
 
 ## Screenshots
 
-
+![Binfoge Syntax](resources\.ext\screenshots\binfoge.png)
+![Binfoge UPC Syntax](resources\.ext\screenshots\binfoge-upc.png)
 
 ## License
 

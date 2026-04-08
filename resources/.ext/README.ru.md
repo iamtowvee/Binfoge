@@ -13,7 +13,8 @@
 
 ## Скриншоты
 
-
+![Binfoge Syntax](screenshots/binfoge.png)
+![Binfoge UPC Syntax](screenshots/binfoge-upc.png)
 
 ## Лицензия
 

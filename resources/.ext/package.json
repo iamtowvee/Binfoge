@@ -2,9 +2,12 @@
   "name": "binfoge",
   "displayName": "Binfoge Language",
   "description": "Syntax highlighting for Binfoge & UPC Languages",
-  "version": "26.4.9",
+  "version": "26.4.10",
   "license": "Apache-2.0",
-  "repository": "https://github.com/iamtowvee/binfoge",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamtowvee/binfoge"
+  },
   "publisher": "Fooltawn",
   "engines": {
     "vscode": "^1.85.0"
