@@ -29,8 +29,17 @@ fn int calc(str op, int first, int second) {
 }
 
 pub int main() {
-    let int x = calc("+", 14, 28);
-    sendln!(x);
+    let str c = "+";
+    let int a = 14;
+    let int b = 28;
+
+    let int x = calc(c, a, b);
+    if (c == "/" && b == 0) {
+        stmt::null;
+    } else {
+        sendln!(x);
+    }
+
     return 0;
 }
 
