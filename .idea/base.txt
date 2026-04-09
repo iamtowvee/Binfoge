@@ -2,3 +2,151 @@ Binfoge - высокоуровневый нативно-компилируемы
 
 Версия: 26.04.1A
 
+cli:
+(?) Аргументы: <arg> обязательный; [arg] опциональный
+
+    binfoge --help
+    binfoge --docs [lang]
+        ^ LANG:
+            * ru
+            * en
+    binfoge debug <path_to_file.bnf> [args]
+        ^ ARGS:
+            :save_log_to:"path_to_file"
+    binfoge build <path_to_config> [args]
+        ^ ARGS:
+            :save_log_to="path_to_file"
+            :save_c_sources
+            :verbose
+    binfoge test <path_to_config> [args]
+        ^ ARGS:
+            :save_log_to="path_to_file"
+            :save_c_sources
+            :verbose
+
+Примеры команд:
+    binfoge --docs ru
+    binfoge build binfoge.upc :save_c_sources :save_log_to="logs/last.txt" :verbose
+
+Binfoge UPC - конфигурация проекта; обязательные поля: name, version, main
+binfoge.upc (<-- такое название обязательно):
+```upc
+#! variables
+#! Types are detected automatically*
+#! view: key=value
+my.custom.version="ABC-VERSION-FORM"
+its.character='c'
+its.true_const=true
+its.false_const=false
+its.null_const=null
+its.int_number=65536
+its.float_number=3.1415926
+
+#! config of project
+#! You cannot put any phrases or words in the key names, only prepared ones
+#! Value types (float, integer, boolean, string, character) for certain keys are also predefined.
+#! view: key:(value)
+name:("my-app2") #! Name of project
+version:("0.1.0") #! Version of project (Support formats: CalVer, SemVer)
+author:["a","b"] #! author/-s
+main:("main.ftk") #! path to main file
+build.outfile:("${name}-${my.custom.version}") #! name of outfile (without extention)
+build.outdir:("bin") #! path to outfile
+test.outfile:("test_${name}_${version}") #! name of test build file
+test.outdir:("test") #! path to test build file
+
+#! Types are detected automatically*:
+#! number - int
+#! number with dot - float
+#! values in double quota - str
+#! values in single quota - char
+#! true/false - bool
+```
+
+Процесс компиляции:
+
+user_code -> binfoge.exe -> C -> gcc/mingw/clang/tcc -> EXE
+
+Binfoge - сам язык программирования, расширение .bnf (или .bn, тоже поддерживатеся)
+file.bnf:
+```binfoge
+fn int calc(str op, int first, int second) {
+    case (op) {
+        "+" => { return first + second; },
+        "-" => { return first - second; },
+        "*" => { return first * second; },
+        "/" => {
+            if (second != 0) {
+                return first / second;
+            } else {
+                sendln!("Infinity.");
+                return 0;
+            }
+        },
+        ["^","**"] => { return first ** second; },
+        "%" => { return first % second; },
+        _ => {
+            sendln!("Unknown.");
+            return 0; 
+        }
+    }
+    return 0; // Every function must have a return expression before its end
+}
+
+pub int main() {
+    let str c = "+";
+    let int a = 14;
+    let int b = 28;
+
+    let int x = calc(c, a, b);
+    if (c == "/" && b == 0) {
+        stmt::null;
+    } else {
+        sendln!(x);
+    }
+
+    return 0;
+}
+```
+
+А так же
+```
+int anything() {
+    const double y = 3.14;
+    sendln!(y);
+    return 0;
+}
+
+anything(); // создает y
+anything(); // не создает y
+```
+
+Ошибки:
+ERROR 0x0001: Missing semicolon ";"
+    │ └─ X:\full\path\to\file.ftk:14:20
+    │
+ 13 │ sendln!("hello");
+ 14 │ sendln!("hello, A")
+    │                    ^ Here (14:20)
+ 15 │ sendln!("hello");
+    │
+    └─
+
+Так же важно:
+
+Это тоже работает
+```
+sendln!("Hello, world");
+
+sendln
+!
+(
+    "Hello, world"
+);
+```
+
+Первая версия предусматривает:
+sendln!(3.14 | " <-- it's pi " | 4 | 'c' | 'h' | 'a' | 'r' | true);
+Где ! - не макрос, а обозначение "функция из core или std"
+
+И полностью поддерживается Ultimate Project Configuration (binfoge.upc)
