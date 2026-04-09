@@ -8,8 +8,9 @@
 
 Версия: `26.4.1` (Поддерживаемая версия языка Binfoge: `A26.04.1`)
 
-> [!NOTE]
 > Компилятор языка скачивается отдельно на: [GitHub Releases](https://github.com/iamtowvee/binfoge/releases).
+
+---
 
 ## Скриншоты
 
